@@ -21,7 +21,7 @@ public class GraphicsDisplay extends JPanel {
     private BasicStroke markerStroke;
     private Font axisFont;
 
-    public GraphicsDisplay(){//задаются параметры отображения осей, подписей осей, точек
+    public GraphicsDisplay(){//Г§Г Г¤Г ГѕГІГ±Гї ГЇГ Г°Г Г¬ГҐГІГ°Г» Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї Г®Г±ГҐГ©, ГЇГ®Г¤ГЇГЁГ±ГҐГ© Г®Г±ГҐГ©, ГІГ®Г·ГҐГЄ
         setBackground(Color.white);
         graphicsStroke=new BasicStroke(2.0f,BasicStroke.CAP_BUTT,BasicStroke.JOIN_ROUND,10.0f,new float[] {1,1,1,1,1,1,4,1,2,1,2},0.0f);
         axisStroke=new BasicStroke(2.0f,BasicStroke.CAP_BUTT,BasicStroke.JOIN_ROUND,10.0f,null,0.0f);
@@ -29,17 +29,17 @@ public class GraphicsDisplay extends JPanel {
         axisFont=new Font("Serif",Font.BOLD,36);
     }
 
-    public void showGraphics(double[][] graphicsData){//вызывается, если выбраны данные для графика
+    public void showGraphics(double[][] graphicsData){//ГўГ»Г§Г»ГўГ ГҐГІГ±Гї, ГҐГ±Г«ГЁ ГўГ»ГЎГ°Г Г­Г» Г¤Г Г­Г­Г»ГҐ Г¤Г«Гї ГЈГ°Г ГґГЁГЄГ 
         this.graphicsData=graphicsData;
-        repaint();//вызывает метод paintComponent для перерисовки графика после обновления данных
+        repaint();//ГўГ»Г§Г»ГўГ ГҐГІ Г¬ГҐГІГ®Г¤ paintComponent Г¤Г«Гї ГЇГҐГ°ГҐГ°ГЁГ±Г®ГўГЄГЁ ГЈГ°Г ГґГЁГЄГ  ГЇГ®Г±Г«ГҐ Г®ГЎГ­Г®ГўГ«ГҐГ­ГЁГї Г¤Г Г­Г­Г»Гµ
     }
 
-    public void setShowAxis(boolean showAxis){//устанавливает необходимсоть отрисовки осей координат
+    public void setShowAxis(boolean showAxis){//ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГІ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г±Г®ГІГј Г®ГІГ°ГЁГ±Г®ГўГЄГЁ Г®Г±ГҐГ© ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ
         this.showAxis=showAxis;
         repaint();
     }
 
-    public void setShowMarkers(boolean showMarkers){//устанавливает необходимость отрисовки точек
+    public void setShowMarkers(boolean showMarkers){//ГіГ±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГІ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г®Г±ГІГј Г®ГІГ°ГЁГ±Г®ГўГЄГЁ ГІГ®Г·ГҐГЄ
         this.showMarkers=showMarkers;
         repaint();
     }
@@ -72,7 +72,7 @@ public class GraphicsDisplay extends JPanel {
         }
     }
 
-    protected void paintAxis(Graphics2D canvas){//отрисовка осей координат
+    protected void paintAxis(Graphics2D canvas){//Г®ГІГ°ГЁГ±Г®ГўГЄГ  Г®Г±ГҐГ© ГЄГ®Г®Г°Г¤ГЁГ­Г ГІ
         canvas.setStroke(axisStroke);
         canvas.setColor(Color.black);
         canvas.setPaint(Color.black);
@@ -115,10 +115,10 @@ public class GraphicsDisplay extends JPanel {
         }
     }
 
-    protected void paintMarkers(Graphics2D canvas){//торисовка точек
+    protected void paintMarkers(Graphics2D canvas){//ГІГ®Г°ГЁГ±Г®ГўГЄГ  ГІГ®Г·ГҐГЄ
         canvas.setStroke(markerStroke);
-        canvas.setColor(Color.RED);
-        canvas.setPaint(Color.RED);
+        canvas.setColor(Color.RED); //point color was changed
+        canvas.setPaint(Color.RED); //point color was changed
         Double dx=5.5;
         Double dy=5.5;
         for(double[] point:graphicsData){
@@ -130,12 +130,12 @@ public class GraphicsDisplay extends JPanel {
             rhombus.lineTo(center.getX()-dx,center.getY());
             rhombus.closePath();
             canvas.draw(rhombus);
-            if((double)((int)center.getY()/2)%10!=0)//проверка, является ли целая часть функции нечетной
+            if((double)((int)center.getY()/2)%10!=0)//ГЇГ°Г®ГўГҐГ°ГЄГ , ГїГўГ«ГїГҐГІГ±Гї Г«ГЁ Г¶ГҐГ«Г Гї Г·Г Г±ГІГј ГґГіГ­ГЄГ¶ГЁГЁ Г­ГҐГ·ГҐГІГ­Г®Г©
             canvas.fill(rhombus);
         }
     }
 
-    public void paintComponent(Graphics g){//отрисовка графика
+    public void paintComponent(Graphics g){//Г®ГІГ°ГЁГ±Г®ГўГЄГ  ГЈГ°Г ГґГЁГЄГ 
         super.paintComponent(g);
         if(graphicsData==null || graphicsData.length==0)
             return;
