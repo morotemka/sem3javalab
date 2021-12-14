@@ -29,7 +29,7 @@ public class GornerTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {//возвращает элемент таблицы
+    public Object getValueAt(int rowIndex, int columnIndex) {//ГўГ®Г§ГўГ°Г Г№Г ГҐГІ ГЅГ«ГҐГ¬ГҐГ­ГІ ГІГ ГЎГ«ГЁГ¶Г»
         double x=from+step*rowIndex;
         if(columnIndex==0){
             return x;
@@ -41,12 +41,12 @@ public class GornerTableModel extends AbstractTableModel {
             }
             return result;
         }else {
-            int size=coefficient.length;//метод Горнера
+            int size=coefficient.length;//Г¬ГҐГІГ®Г¤ ГѓГ®Г°Г­ГҐГ°Г 
             double result =coefficient[size-1];
             for(int i =size-2; i>=0;i--) {
                 result = result * x + coefficient[i];
             }
-            if(Math.ceil(result)==0)
+            if(Math.ceil(result)==0) //floor changed to ceil
                 return true;
             else
                 return false;
@@ -63,11 +63,11 @@ public class GornerTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         if(column==0) {
-            return "Значение Х";
+            return "Г‡Г­Г Г·ГҐГ­ГЁГҐ Г•";
         }
         else if(column==1)
-            return "Значение многочлена";
-        return "Малое число?";
+            return "Г‡Г­Г Г·ГҐГ­ГЁГҐ Г¬Г­Г®ГЈГ®Г·Г«ГҐГ­Г ";
+        return "ГЊГ Г«Г®ГҐ Г·ГЁГ±Г«Г®?";
     }
 
     public double getFrom() {
